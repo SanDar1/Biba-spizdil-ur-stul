@@ -1,0 +1,10 @@
+.box {
+    background-color: lightgray;
+    color: white;
+}
+
+.footerLink {
+    outline: none;
+    text-decoration: none;
+    color: dodgerblue;
+}

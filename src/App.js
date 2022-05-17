@@ -1,25 +1,53 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Box from "@mui/material/Box";
+
+import Navbar from "./UI/Navbar/Navbar";
+import Footer from "./UI/Footer/Footer";
+
+import LoginPage from "./Components/LoginPage/LoginPage";
+import MainPage from "./Components/MainPage/MainPage";
+import Header from "./UI/Header/Header";
 
 function App() {
+  const isLogged = false
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    !isLogged ?
+      <>
+        <Header />
+        <Box
+          sx={{
+            padding: 5,
+            marginLeft: 15
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" exact element={<LoginPage/>}/>
+          </Routes>
+        </BrowserRouter>
+        </Box>
+        <Footer/>
+      </>
+      :
+      <>
+        <Navbar/>
+        <Box
+          sx={{
+            padding: 5,
+            marginLeft: 15
+          }}
+        >
+          <BrowserRouter>
+            <Routes>
+              <Route path="/main" exact element={<MainPage/>}/>
+            </Routes>
+          </BrowserRouter>
+        </Box>
+        <Footer/>
+      </>
+  )
 }
 
 export default App;
